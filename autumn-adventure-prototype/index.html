@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#171b22" />
+  <title>The Autumn Castle — Adventure Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app" class="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>MONTHLY ADVENTURE</span></div>
+      <div class="edition-label">EDITION 01 <span>•</span> AUTUMN</div>
+    </header>
+
+    <section id="screen-home" class="screen active">
+      <div class="scene scene-home">
+        <div class="moon"></div><div class="castle"><i></i><i></i><i></i><b></b></div>
+        <div class="distant-castle-glow"></div>
+        <div class="fog fog-one"></div><div class="fog fog-two"></div><div class="fog fog-three"></div>
+        <div class="pine pine-a"></div><div class="pine pine-b"></div><div class="pine pine-c"></div>
+        <div class="autumn-tree tree-left"></div><div class="autumn-tree tree-right"></div><div class="autumn-tree tree-mid"></div>
+        <div class="ground"></div>
+        <div class="home-lantern" aria-hidden="true"><span>✦</span></div>
+        <div class="home-leaf leaf-home-one" aria-hidden="true">◆</div><div class="home-leaf leaf-home-two" aria-hidden="true">◆</div>
+        <div class="home-copy">
+          <p class="eyebrow">A BRANCHING ADVENTURE</p>
+          <h1>The Autumn<br><em>Castle</em></h1>
+          <p class="intro">A quiet forest. A distant castle. Every choice changes the path ahead.</p>
+          <button id="start-btn" class="pixel-button">ENTER THE FOREST <span>→</span></button>
+          <p class="microcopy">BEST EXPERIENCED WITH SOUND OFF AND CURIOSITY ON</p>
+        </div>
+        <div class="traveler traveler-home" aria-label="A small robed traveler"></div>
+      </div>
+    </section>
+
+    <section id="screen-question" class="screen">
+      <div class="game-scene">
+        <div class="scene-sky"></div><div class="distant-hills"></div><div class="tree-line"></div><div class="path"></div>
+        <div class="traveler" id="traveler" aria-label="Your robed traveler"></div><div id="ambient-layer" class="ambient-layer" aria-hidden="true"></div>
+        <div class="scene-caption"><span id="scene-location">THE OLD FOREST</span><span id="progress-label">0 DECISIONS</span></div>
+      </div>
+      <div class="question-panel">
+        <div class="progress-track"><div id="progress-fill"></div></div>
+        <p class="eyebrow" id="question-kicker">DECISION 01</p>
+        <h2 id="question-title">A path appears...</h2>
+        <p id="question-description" class="question-description"></p>
+        <div id="answers" class="answers"></div>
+        <p class="hint">Choose carefully. The forest remembers.</p>
+      </div>
+    </section>
+
+    <section id="screen-account" class="screen centered-screen">
+      <div class="parchment-card">
+        <p class="eyebrow">SAVE YOUR ADVENTURE</p>
+        <h2>Save your adventure</h2>
+        <p>Create an account to save this month’s result and keep your collected item for the next newsletter adventure.</p>
+        <form id="account-form">
+          <label>Username<input id="username" name="username" required minlength="2" maxlength="20" placeholder="Choose an adventurer name" /></label>
+          <label>Email<input id="email" name="email" type="email" required placeholder="you@example.com" /></label>
+          <label>Password<input id="password" name="password" type="password" required minlength="8" placeholder="At least 8 characters" /></label>
+          <label class="consent"><input id="newsletter-optin" type="checkbox" /> <span>I'd like to receive future newsletter and game updates.</span></label>
+          <button class="pixel-button" type="submit">SAVE & REVEAL RESULT <span>→</span></button>
+        </form>
+        <p class="microcopy">PROTOTYPE ONLY: this form does not create an account or transmit your details.</p>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen centered-screen">
+      <div class="result-card">
+        <p class="eyebrow">YOUR ADVENTURE ENDS… FOR NOW</p>
+        <div id="result-icon" class="reward-icon">✧</div>
+        <p id="result-tier" class="result-tier">RARE</p>
+        <h2 id="result-title">Unique!</h2>
+        <p id="result-description" class="result-description"></p>
+        <p id="result-preview-note" class="result-preview-note" hidden>Your fate has been revealed…</p>
+        <div id="result-meta" class="result-meta"><span id="result-score">SCORE: 0</span><span id="result-item">ITEM: —</span></div>
+        <div id="result-actions" class="result-actions">
+          <button id="share-btn" class="pixel-button">COPY RESULT LINK</button>
+          <button id="collection-btn" class="secondary-button">VIEW YOUR COLLECTION</button>
+        </div>
+        <p id="share-feedback" class="microcopy" aria-live="polite"></p>
+        <div id="retry-note" class="retry-note" hidden></div>
+      </div>
+    </section>
+
+    <section id="screen-collection" class="screen centered-screen">
+      <div class="parchment-card collection-card">
+        <p class="eyebrow">YOUR ADVENTURER PROFILE</p>
+        <h2 id="collection-heading">Your collection</h2>
+        <div class="tabs"><button class="tab active" data-tab="share">Share your result</button><button class="tab" data-tab="prizes">Prizes database</button><button class="tab" data-tab="leaderboard">Leaderboard</button></div>
+        <div id="tab-content"></div>
+        <button id="back-result" class="secondary-button">← BACK TO RESULT</button>
+      </div>
+    </section>
+
+    <div id="transition" class="transition-overlay" aria-hidden="true"><div class="lantern">✦</div><p>THE LANTERN GUIDES THE WAY</p></div>
+    <footer class="footer"><span>A BRANCHING AUTUMN ADVENTURE</span><span>PROTOTYPE BUILD 0.4</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
