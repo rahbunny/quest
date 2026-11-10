@@ -5,43 +5,44 @@
   Add ?shadow=1 to the URL to force the rare encounter for testing only.
 */
 const EDITION = {
-  title: 'The Autumn Castle',
+  title: 'QUEST: The Autumn Castle',
   shadowRouteChance: 0.10,
   nodes: {
     start: {
       location: 'THE FOREST FORK', title: 'Three paths beneath the leaves',
       description: 'The autumn forest parts before you. One trail is dim and overgrown, another glows in the afternoon light. Behind you, the road home is already fading.',
       answers: [
-        { label: 'Take the shaded path', next: 'shaded_path' },
-        { label: 'Follow the bright path', next: 'bright_path' },
-        { label: 'Turn around and leave', ending: 'perished' }
+        { label: 'Take the shaded path (i aint scared of da dark)', next: 'shaded_path' },
+        { label: 'Follow the bright path (who needs sunglasses type)', next: 'bright_path' },
+        { label: 'Turn homeward bound (erm maybe i left something?)', ending: 'perished' }
       ]
     },
     shaded_path: {
       location: 'THE SHADED PATH', title: 'A figure among the trees',
-      description: 'The light thins beneath the branches. Ahead, a gnoll stands in the path. You could approach, ignore him, or hurry toward the brighter trail.',
+      description: 'The light thins beneath the branches. Ahead, an eerie gnoll stands in the path. You could approach, ignore him, or hurry toward the brighter trail.',
       answers: [
-        { label: 'Approach the tree gnoll', next: 'tree_gnoll' },
-        { label: 'Ignore him and keep walking', ending: 'perished' },
-        { label: 'Dart away toward the bright path', next: 'bright_path' }
+        { label: 'Approach the tree gnoll (yes! walk towards strangers!!)', next: 'tree_gnoll' },
+        { label: 'Ignore him and keep walking (if i cant see him he cant see me.. right?)', ending: 'perished' },
+        { label: 'Dart away toward the bright path (yea no i sleep with a night light)', next: 'bright_path' }
       ]
     },
     tree_gnoll: {
       location: 'THE GNOLL’S CLEARING', title: 'The gnoll blocks your way',
-      description: 'The gnoll watches you carefully. He offers a riddle, but there may be another way past him. (Some encounters are rarer than others.)',
+      description: 'The gnoll watches you carefully. He offers a riddle: "I eternally drip and those who wear me are NITpicky" , but there may be another way past him. (huh... that option isn't supposed to....)',
       answers: [
-        { label: 'Answer his riddle', next: 'riddle_success' },
-        { label: 'Give the wrong answer', ending: 'perished' }
+        { label: 'A river?', next: 'perished' },
+        { label: 'A sweater?', next: 'riddle_success' },
+        { label: 'Try to win him over with a smile instead', ending: 'perished' }
       ],
       shadowAnswer: { label: 'Fight the gnoll', next: 'puppy_cave', shadowOnly: true }
     },
     riddle_success: {
-      location: 'BEYOND THE CLEARING', title: 'The gnoll lets you pass',
-      description: 'Your answer satisfies the gnoll. He steps aside, revealing three possible destinations. But the cave is not what it seems...',
+      location: 'BEYOND THE CLEARING', title: 'The gnoll decides',
+      description: '"That one took me years to come up with". He steps aside with a disgruntled noise, revealing three possible destinations. You notice he's positioned himself in front of the cave...odd...',
       answers: [
-        { label: 'Head toward the castle', next: 'castle' },
-        { label: 'Follow the sound of water', next: 'river' },
-        { label: 'Enter the cave', next: 'empty_cave' }
+        { label: 'Head toward the castle (yea shelter sounds good)', next: 'castle' },
+        { label: 'Follow the sound of water (try not to pee)', next: 'river' },
+        { label: 'Enter the cave (curious much?)', next: 'empty_cave' }
       ]
     },
     empty_cave: {
@@ -51,64 +52,64 @@ const EDITION = {
     },
     puppy_cave: {
       location: 'THE HIDDEN CAVE', title: 'A tiny chorus of whimpers',
-      description: 'You overcome the gnoll and discover a hidden den. A litter of puppies huddles together in the warm straw. What will you do?',
+      description: 'You dart past the gnoll before he changes his mind and discover a hidden den. A litter of puppies huddles together in the warm straw under a blanket. What will you do?',
       answers: [
-        { label: 'Rescue the puppies and take them with you', ending: 'legendary' },
-        { label: 'Leave them and continue onward', next: 'after_puppies' },
-        { label: 'Kill the puppies', ending: 'perished' }
+        { label: 'Rescue the puppies and take them with you (aww so cute!)', ending: 'legendary' },
+        { label: 'Leave them and continue onward (yea not my problem)', next: 'after_puppies' },
+        { label: 'Take the puppies blanket (perhaps it's important?)', ending: 'perished' }
       ]
     },
     after_puppies: {
       location: 'OUTSIDE THE CAVE', title: 'The path continues',
       description: 'You leave the puppies undisturbed and step back into the autumn air. The castle rises to one side, while the river winds through the trees on the other.',
       answers: [
-        { label: 'Continue toward the castle', next: 'castle' },
-        { label: 'Make your way to the river', next: 'river' }
+        { label: 'Continue toward the castle (my feet gettin cold fr)', next: 'castle' },
+        { label: 'Make your way to the river (getting kinda stinky huh...)', next: 'river' }
       ]
     },
     bright_path: {
       location: 'THE BRIGHT PATH', title: 'Sunlight through the canopy',
       description: 'The trees thin and golden light spills across the trail. You hear a river nearby and spot a strange plant growing beside the path.',
       answers: [
-        { label: 'Dip your toes in the river', next: 'river' },
-        { label: 'Drink from the strange plant', ending: 'perished' },
-        { label: 'Bathe and follow the path onward', next: 'bathing' }
+        { label: 'Dip your toes in the river (free the dogs)', next: 'river' },
+        { label: 'Drink from the strange plant's nectar (mm honey)', ending: 'perished' },
+        { label: 'Bathe and follow the path onward (holy stench)', next: 'bathing' }
       ]
     },
     bathing: {
       location: 'THE CLEARING', title: 'A place to catch your breath',
       description: 'Refreshed, you reach a clearing where the castle road branches away from a dark stretch of forest.',
       answers: [
-        { label: 'Head toward the castle', next: 'castle' },
-        { label: 'Wander back into the forest', ending: 'perished' }
+        { label: 'Head toward the castle (looks warm n toasty)', next: 'castle' },
+        { label: 'Wander back into the forest (nah im tougher than the cold)', ending: 'perished' }
       ]
     },
     river: {
       location: 'THE RIVERBANK', title: 'The river’s offerings',
       description: 'Clear water runs over smooth stones. A glimmer catches your eye beneath the surface. Nearby, a fish struggles and a turtle has become caught on a hook.',
       answers: [
-        { label: 'Reach for the shiny golden pebble', ending: 'basic' },
-        { label: 'Kick away the fish', ending: 'perished' },
-        { label: 'Help the hooked turtle', ending: 'medium' }
+        { label: 'Reach for the shiny golden pebble (oo pretty)', ending: 'basic' },
+        { label: 'Kick away the fish (get away from my dogs!)', ending: 'perished' },
+        { label: 'Help the hooked turtle (#save the turtles)', ending: 'medium' }
       ]
     },
     castle: {
       location: 'THE CASTLE', title: 'The castle doors stand open',
       description: 'You arrive at the castle. From within, you hear footsteps, clattering dishes, and the restless sounds of horses in the stables. Where will you go?',
       answers: [
-        { label: 'Sneak into the throne room', ending: 'perished' },
-        { label: 'Scout the stables', ending: 'rare' },
-        { label: 'Raid the kitchen', ending: 'good' }
+        { label: 'Sneak into the throne room (maybe i'll see a princess!!)', ending: 'perished' },
+        { label: 'Scout the stables (better to take a back route)', ending: 'rare' },
+        { label: 'Raid the kitchen (me is hungry)', ending: 'good' }
       ]
     }
   },
   outcomes: {
-    perished: { tier: 'BAD', title: 'You have perished', item: 'No item collected', icon: '☠', description: 'The forest has claimed another adventurer. Share the newsletter with a friend and return for another attempt after the cooldown.' },
-    basic: { tier: 'BASIC', title: 'Simple but sufficient', item: 'Golden Pebble', icon: '◆', description: 'A little treasure, found by keeping your eyes open. Simple, but sufficient.' },
-    medium: { tier: 'MEDIUM', title: 'Well-deserved', item: 'Seashell', icon: '🐚', description: 'A kind choice brought you a well-earned keepsake from the river.' },
-    good: { tier: 'GOOD', title: 'Interesting!', item: 'Cookies', icon: '✦', description: 'A sweet reward for a bold little castle raid.' },
-    rare: { tier: 'RARE', title: 'Unique!', item: 'Horse', icon: '♞', description: 'You found the stables and earned a remarkable companion.' },
-    legendary: { tier: 'LEGENDARY', title: 'Holy smokes', item: 'Puppies', icon: '♥', description: 'The secret shadow route led you to a litter of puppies. You rescued them and uncovered the legendary reward!' }
+    perished: { tier: 'BAD', title: 'You have perished.(boi smarten up and try again)', item: 'No item collected', icon: '☠', description: 'The forest has claimed another adventurer. Share the newsletter with a friend and return for another attempt after the cooldown.' },
+    basic: { tier: 'BASIC', title: 'Simple but sufficient. (person see rock. person like. person take. realll unique)', item: 'Golden Pebble', icon: '◆', description: 'A little treasure, found by keeping your eyes open. Simple, but sufficient.' },
+    medium: { tier: 'MEDIUM', title: 'Well-deserved. (a shell! nice! hopefully it's not explosive *wink*)', item: 'Seashell', icon: '🐚', description: 'A kind choice brought you a well-earned keepsake from the river.' },
+    good: { tier: 'GOOD', title: 'Interesting! (who doesn't love cookies... right... rightttt)', item: 'Cookies', icon: '✦', description: 'A sweet reward for a bold little castle raid.' },
+    rare: { tier: 'RARE', title: 'Unique! (finally a smart one, obv a horse is useful, wait till u hear ab the others...)', item: 'Horse', icon: '♞', description: 'You found the stables and earned a remarkable companion.' },
+    legendary: { tier: 'LEGENDARY', title: 'Holy smokes! (awww cutee!! puppies!! ur a good person for sure :))', item: 'Puppies', icon: '♥', description: 'The secret shadow route led you to a litter of puppies. You rescued them and uncovered the legendary reward!' }
   }
 };
 
